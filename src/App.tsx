@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Layout, Typography, Divider } from "antd";
+import TaskTable from "./components/TaskTable";
+import TaskForm from "./components/TaskForm";
 
-function App() {
+const { Header, Content } = Layout;
+const { Title } = Typography;
+
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout style={{ minHeight: "100vh" }}>
+      <Header>
+        <Title style={{ color: "white" }}>Task Manager</Title>
+      </Header>
+      <Content style={{ padding: 24 }}>
+        <TaskForm onCreated={() => window.location.reload()} />
+        <Divider />
+        <TaskTable />
+      </Content>
+    </Layout>
   );
-}
+};
 
 export default App;
